@@ -40,7 +40,6 @@
                                 return templateLoad.get('home');
                             }],
                             //controller: 'HomeController'
-                            }
                         }
                     }
                 });
@@ -55,7 +54,7 @@
                   get: function (template) {
 
                     var tplRequest = {
-                    url: baseUrl+'/pages/'+template+'.html';
+                        url: baseUrl+'/pages/'+template+'.html'
                     };
 
                     return $http(tplRequest)
