@@ -13,7 +13,7 @@
   </head>
   <body>
     
-    <div ui-view="app"></div>
+    <div ui-view="AppMain"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha512-zVjBbEjCeSbeIW2napMaT8VYXI/akKe9Yq2x2sRFiIX+onOjlFkqHVks/7IPSPLnmlHyoH8tFcL3PHdPCXC9ww==" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.min.js" integrity="sha512-miUC4LNgbyGtEs6iv9bLZVxNjN89xiiOYgOSs5qyqtv7IlI7ZlODV11IeN9DpNpgkZ28RhYJpnyNKwDuH4PEVw==" crossorigin="anonymous"></script>
@@ -34,12 +34,36 @@
                 $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: baseUrl+'/pages/home.html'
+                    views: {
+                        "AppMain": {
+                            templateProvider: ['templateLoad', function (templateLoad) {
+                                return templateLoad.get('home');
+                            }],
+                            //controller: 'HomeController'
+                            }
+                        }
+                    }
                 });
 
                 //html5Mode = true
                 $locationProvider.html5Mode(true);
 
+            }]);
+
+            app.factory('templateLoad', ['$http','$location','$rootScope','$state','$window','$timeout', function ($http,$location,$rootScope,$state,$window,$timeout) {
+                return {
+                  get: function (template) {
+
+                    var tplRequest = {
+                    url: baseUrl+'/pages/'+template+'.html';
+                    };
+
+                    return $http(tplRequest)
+                        .then(function(response) {
+                              return response.data;
+                        });
+                  }
+                };
             }]);
 
         })(window.angular);
