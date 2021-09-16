@@ -23,6 +23,8 @@
             'use strict';
             var baseUrl = '//maxestevam.github.io';
 
+            angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="'+baseUrl+'/" />'));
+
             var app = angular.module("maxestevam@github", ["ui.router"]);
 
             app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$httpProvider', function($stateProvider, $urlRouterProvider, $locationProvider,$httpProvider) {
