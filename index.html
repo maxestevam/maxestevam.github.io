@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="maxestevam@github">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,12 +7,42 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 
     <title>Max Estevam</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-
     
+    <div ui-view="app"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js" integrity="sha512-zVjBbEjCeSbeIW2napMaT8VYXI/akKe9Yq2x2sRFiIX+onOjlFkqHVks/7IPSPLnmlHyoH8tFcL3PHdPCXC9ww==" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.min.js" integrity="sha512-miUC4LNgbyGtEs6iv9bLZVxNjN89xiiOYgOSs5qyqtv7IlI7ZlODV11IeN9DpNpgkZ28RhYJpnyNKwDuH4PEVw==" crossorigin="anonymous"></script>
+
+    <script>
+        (function(){
+            'use strict';
+            var baseUrl = '//maxestevam.github.io';
+
+            var app = angular.module("maxestevam@github", ["ui.router"]);
+
+            app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider','$httpProvider', function($stateProvider, $urlRouterProvider, $locationProvider,$httpProvider) {
+
+                $urlRouterProvider.otherwise('/404');
+                // HOME ROUTE
+                $stateProvider
+                .state('home', {
+                    url: '/',
+                    templateUrl: baseUrl+'/pages/home'
+                });
+
+                //html5Mode = true
+                $locationProvider.html5Mode(true);
+
+            }]);
+
+        })(window.angular);
+    </script>   
+
+
   </body>
 </html>
