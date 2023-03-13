@@ -6,4 +6,4 @@ let website = `https://${window.hostname}`
 let whatsLink = `https://wa.me/5543991108116?&text=Olá, vim por referência do site ${website}`
 
 let madeBy = document.querySelector('.made-by')
-madeBy.innerHTML = `Made By <a href="${whatsLink}">Max Estevam</a>`
+madeBy.innerHTML = `Made By <a href="${whatsLink}" target="_blank">Max Estevam</a>`
