@@ -1,4 +1,4 @@
-let styleSheet = `.made-by a{filter: grayscale(1);}`
+let styles = `.made-by a{filter: grayscale(1);}`
 var styleSheet = document.createElement("style")
 styleSheet.innerText = styles
 document.head.appendChild(styleSheet)
